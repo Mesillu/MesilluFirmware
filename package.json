@@ -1,0 +1,16 @@
+{
+  "name": "mesillu-firmware",
+  "version": "1.0.0",
+  "description": "Mesillu Firmware — Code Snippet Repository",
+  "private": true,
+  "engines": {
+    "node": ">=18.x"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.4.3"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site — no build step required'"
+  }
+}

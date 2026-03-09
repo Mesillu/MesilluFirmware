@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "buildCommand": "echo 'No build step required'",
+  "outputDirectory": ".",
+  "functions": {
+    "api/snippets.js": {
+      "runtime": "nodejs18.x",
+      "maxDuration": 10,
+      "memory": 256
+    }
+  },
+  "rewrites": [
+    { "source": "/api/snippets", "destination": "/api/snippets.js" },
+    { "source": "/api/snippets/(.*)", "destination": "/api/snippets.js" }
+  ],
+  "headers": [
+    {
+      "source": "/admin.html",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    }
+  ]
+}

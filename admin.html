@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>MESILLU — ADMIN TERMINAL</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <nav>
+      <a class="nav-logo" href="/">
+        <span class="bracket">[</span>MESILLU<span class="bracket">]</span>
+      </a>
+      <div class="nav-status">
+        <div class="status-dot"></div>
+        <span id="auth-status-label">AWAITING AUTH</span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ══════════════════════════════
+       AUTH SCREEN
+  ══════════════════════════════ -->
+  <div class="auth-screen" id="auth-screen">
+    <div class="auth-box">
+      <div class="auth-logo">MESILLU</div>
+      <div class="auth-sub">// ADMIN TERMINAL ACCESS</div>
+
+      <form id="login-form">
+        <input
+          class="auth-field"
+          type="password"
+          id="pw-input"
+          placeholder="ENTER ADMIN KEY"
+          autocomplete="current-password"
+          spellcheck="false"
+        />
+        <div class="auth-error" id="login-error"></div>
+        <button class="auth-btn" type="submit">AUTHENTICATE</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       ADMIN PANEL
+  ══════════════════════════════ -->
+  <div class="admin-wrap" id="admin-wrap">
+
+    <!-- Header row -->
+    <div class="admin-header">
+      <div class="admin-title">
+        ADMIN TERMINAL
+        <span>// SNIPPET MANAGEMENT CONSOLE</span>
+      </div>
+      <div style="display:flex;gap:0.8rem;align-items:center;flex-wrap:wrap;">
+        <a href="/" style="text-decoration:none;">
+          <button class="glow-btn">← VIEW SITE</button>
+        </a>
+        <button class="glow-btn danger" onclick="adminLogout()">LOGOUT</button>
+      </div>
+    </div>
+
+    <!-- ── ADD SNIPPET FORM ── -->
+    <div class="add-form-panel">
+      <div class="form-card">
+        <h3>⊕ ADD NEW SNIPPET</h3>
+
+        <form id="snippet-form" novalidate>
+          <div class="form-grid">
+
+            <!-- Title -->
+            <div class="form-field">
+              <label for="f-title">TITLE *</label>
+              <input
+                type="text"
+                id="f-title"
+                name="title"
+                placeholder="e.g. UART Init Routine"
+                autocomplete="off"
+                spellcheck="false"
+                required
+              />
+            </div>
+
+            <!-- Date -->
+            <div class="form-field">
+              <label for="f-date">DATE</label>
+              <input
+                type="date"
+                id="f-date"
+                name="date"
+              />
+            </div>
+
+            <!-- Description -->
+            <div class="form-field full">
+              <label for="f-desc">DESCRIPTION</label>
+              <input
+                type="text"
+                id="f-desc"
+                name="description"
+                placeholder="Brief description of what this snippet does"
+                autocomplete="off"
+              />
+            </div>
+
+            <!-- Code -->
+            <div class="form-field full">
+              <label for="f-code">CODE * &nbsp;<span style="color:var(--text-muted);font-size:0.65rem">— OR UPLOAD FILE BELOW</span></label>
+              <textarea
+                id="f-code"
+                name="code"
+                placeholder="// Paste your code here..."
+                spellcheck="false"
+                autocomplete="off"
+                required
+              ></textarea>
+
+              <!-- File Upload -->
+              <div class="file-upload-row" style="margin-top:0.6rem;">
+                <label class="file-upload-label" for="file-upload">
+                  ⊕ UPLOAD FILE
+                </label>
+                <input type="file" id="file-upload" accept=".txt,.js,.py,.c,.cpp,.h,.rs,.sh,.json,.sql,.ts,.css,.html,.asm,.lua,.rb" />
+                <span class="file-name-display" id="file-name-display"></span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Submit -->
+          <div class="form-actions">
+            <button type="reset" class="glow-btn" onclick="document.getElementById('file-name-display').textContent=''">CLEAR</button>
+            <button type="submit" class="glow-btn green" id="submit-btn">⊕ ADD SNIPPET</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ── SNIPPET LIST ── -->
+    <div class="admin-list-header">EXISTING SNIPPETS</div>
+    <div id="admin-list">
+      <!-- Rows injected by JS -->
+    </div>
+
+    <div style="height:4rem;"></div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Main JS -->
+  <script src="js/main.js"></script>
+
+  <!-- Update status label once authed -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lbl = document.getElementById('auth-status-label');
+      const stored = sessionStorage.getItem('mf_admin_auth');
+      if (stored) {
+        lbl.textContent = 'ADMIN SESSION ACTIVE';
+      }
+      document.querySelector('.admin-wrap').addEventListener('click', () => {
+        lbl.textContent = 'ADMIN SESSION ACTIVE';
+      }, { once: true });
+    });
+  </script>
+
+</body>
+</html>

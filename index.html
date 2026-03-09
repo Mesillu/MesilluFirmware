@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mesillu Firmware — Code snippet library for firmware engineers." />
+  <title>MESILLU FIRMWARE</title>
+
+  <!-- Prism.js Theme -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <!-- Prism additional languages -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Favicon inline SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <nav>
+      <a class="nav-logo" href="/">
+        <span class="bracket">[</span>MESILLU<span class="bracket">]</span>
+      </a>
+      <div class="nav-status">
+        <div class="status-dot"></div>
+        FIRMWARE REPOSITORY ONLINE
+      </div>
+    </nav>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-tag">// SNIPPET LIBRARY v1.0</div>
+    <h1>
+      <span class="accent">FIRMWARE</span><br />
+      CODE VAULT
+    </h1>
+    <p class="hero-sub">Browse, copy, and deploy production-ready firmware snippets</p>
+    <div class="hero-divider"></div>
+  </section>
+
+  <!-- ── TOOLBAR ── -->
+  <div class="toolbar">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search snippets..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+    <div class="count-badge" id="snippet-count">— SNIPPETS</div>
+  </div>
+
+  <!-- ── SNIPPETS GRID ── -->
+  <main class="grid-container" id="snippets-grid">
+    <!-- Cards injected by JS -->
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span>◈</span> MESILLU FIRMWARE REPOSITORY &nbsp;·&nbsp; ALL SNIPPETS ARE PROVIDED AS-IS &nbsp;<span>◈</span>
+  </footer>
+
+  <!-- ── TOAST ── -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Prism.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-rust.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+
+  <!-- Main JS -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
